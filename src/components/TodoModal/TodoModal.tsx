@@ -1,7 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Loader } from '../Loader';
+import { actions } from '../../features/currentTodo';
+// import { useAppSelector } from '../../app/hooks';
 
 export const TodoModal: React.FC = () => {
+  // const show = useAppSelector(store => store.currentTodoReducer);
+  const dispatch = useDispatch();
+
   return (
     <div className="modal is-active" data-cy="modal">
       <div className="modal-background" />
@@ -18,7 +24,12 @@ export const TodoModal: React.FC = () => {
           </div>
 
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button type="button" className="delete" data-cy="modal-close" />
+          <button
+            type="button"
+            className="delete"
+            data-cy="modal-close"
+            onClick={() => dispatch(actions.removeTodo())}
+          />
         </header>
 
         <div className="modal-card-body">

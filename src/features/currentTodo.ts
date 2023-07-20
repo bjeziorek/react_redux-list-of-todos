@@ -27,8 +27,13 @@ const currentTodoReducer = (
   state: State = null,
   action: Action,
 ): State => {
+  // console.log('in', action)
   switch (action.type) {
     // Implement all actions here
+    case 'currentTodo/SET':
+      return action.payload;
+    case 'currentTodo/REMOVE':
+      return null;
 
     default:
       return state;
